@@ -229,6 +229,18 @@ class cluster_maps(object):
         """
         return self.haloprofile.kappa_map(M200, z, self.lib_skyalm.shape, self.lib_skyalm.lsides, xmax)
     
+    def get_tsz_map(self, M200, z, nu, xmax=None):
+        """Get the tsz map of the cluster 
+        Args: 
+            M200: mass (in Msol) of the cluster in a sphere of density 
+                200 times the critical density of the universe
+            z: redshift of the cluster
+            nu: frequency channel in GHz
+        Returns:
+            convergence map: numpy array of shape self.lib_skyalm.shape
+        """
+        return self.haloprofile.tsz_cl(M200, z, nu, self.lib_skyalm.shape, self.lib_skyalm.lsides, xmax)
+    
     def get_kappa0_from_sim(self, lmin, lmax, phi_obs_lm, NL):
         """ Get the kappa_0 estimate from one simulation
         Args: 
